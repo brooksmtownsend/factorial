@@ -10,6 +10,7 @@ use wasmcloud_interface_factorial::{Factorial, FactorialReceiver};
 // and returns only when it receives a shutdown message
 //
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    eprintln!("hoo ha i am factorial");
     provider_main(FactorialProvider::default())?;
 
     eprintln!("factorial provider exiting");
