@@ -1,10 +1,14 @@
-name: Build and Test
+name: Release
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches: [main]
     paths:
+      - "**"
       - "src/**"
       - "Cargo.*"
+    tags:
+      - "v*"
 env:
   # For the release action, you'll have to set the following variables
   WASH_ISSUER_KEY: ${{ secrets.WASH_ISSUER_KEY }}
@@ -126,4 +130,4 @@ jobs:
           WASH_REG_USER: ${{ github.repository_owner }}
           WASH_REG_PASSWORD: ${{ secrets.WASMCLOUD_PAT }}
         run: |
-          wash reg push ghcr.io/${{ github.REPOSITORY }}:${{ env.provider-version }} build/${{ env.provider-name }}_s.wasm -a org.opencontainers.image.source=https://github.com/${{ github.REPOSITORY }} --allow-latest
+          wash reg push ghcr.io/${{ github.REPOSITORY }}:${{ env.provider-version }} build/${{ env.provider-name }}.par.gz -a org.opencontainers.image.source=https://github.com/${{ github.REPOSITORY }} --allow-latest
