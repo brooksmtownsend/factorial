@@ -1,10 +1,14 @@
-name: Build and Test
+name: Release
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches: [main]
     paths:
+      - "**"
       - "src/**"
       - "Cargo.*"
+    tags:
+      - "v*"
 env:
   # For the release action, you'll have to set the following variables
   WASH_ISSUER_KEY: ${{ secrets.WASH_ISSUER_KEY }}
