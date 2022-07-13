@@ -11,7 +11,7 @@ use wasmcloud_interface_factorial::{Factorial, FactorialReceiver};
 //
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     eprintln!("hoo ha i am factorial");
-    provider_main(FactorialProvider::default())?;
+    provider_main(FactorialProvider::default(), Some("Factorial".to_string()))?;
 
     eprintln!("factorial provider exiting");
     Ok(())
