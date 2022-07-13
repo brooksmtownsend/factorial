@@ -47,7 +47,7 @@ jobs:
             target/${{ matrix.target }}/release/${{ env.artifact-name }}.exe
 
   assemble_provider_archive:
-    needs: [build_artifact]
+    needs: [build_provider_targets]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
