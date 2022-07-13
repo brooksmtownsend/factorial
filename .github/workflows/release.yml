@@ -105,6 +105,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: wasmcloud/common-actions/install-wash@main
       - name: Download provider archive
         uses: actions/download-artifact@v3
         with:
