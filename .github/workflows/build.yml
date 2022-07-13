@@ -13,14 +13,14 @@ jobs:
       - name: Check formatting
         run: cargo fmt -- --check
         shell: bash
-      - name: Build provider
-        run: cargo build
       - name: Check lints with clippy
         run: |
           rustup component add clippy
           cargo clippy
+      - name: Build provider
+        run: cargo build
       # Optional, if your integration tests depend on NATS or Redis
-      # - uses: wasmcloud/common-actions/run-nats@main
+      - uses: wasmcloud/common-actions/run-nats@main
       # - uses: wasmcloud/common-actions/run-redis@main
       - name: Test provider
         run: cargo test -- --nocapture
