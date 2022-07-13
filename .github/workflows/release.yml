@@ -97,7 +97,8 @@ jobs:
         with:
           files: build/*.par.gz
           token: ${{ env.WASMCLOUD_PAT }}
-          prerelease: true
+          body_path: release.txt
+          prerelease: false
           draft: false
 
   artifact_release:
